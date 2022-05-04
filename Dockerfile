@@ -6,7 +6,7 @@ RUN apk add --no-cache build-base gcc bash cmake git
 # old gem files
 # https://bundler.io/guides/bundler_2_upgrade.html#faq
 RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
-RUN gem install jekyll-theme-leaf
+RUN gem install minimal-mistakes-jekyll
 
 EXPOSE 4000
 
