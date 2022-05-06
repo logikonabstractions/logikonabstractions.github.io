@@ -1,11 +1,10 @@
-FROM ruby:2-alpine as jekyll
+FROM ruby:slim-buster as jekyll
 
-RUN apk add --no-cache build-base gcc bash cmake git
+# build stuff for jekyll
+RUN apt-get update && apt-get install -y build-essential gcc bash cmake git && rm -rf /var/lib/lists/*
 
-# install both bundler 1.x and 2.x incase you're running
-# old gem files
-# https://bundler.io/guides/bundler_2_upgrade.html#faq
-RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
+
+RUN gem install jekyll bundler
 RUN gem install jekyll-theme-leaf
 
 EXPOSE 4000
